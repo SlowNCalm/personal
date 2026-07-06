@@ -109,6 +109,52 @@ header.site-nav {
   .nav-inner nav a { margin-left: 14px; font-size: 10.5px; }
 }
 
+  
+/* ---------- Hamburger toggle (mobile only) ---------- */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--brass-dim);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+ 
+@media (max-width: 680px) {
+  .nav-inner { padding: 16px 20px; }
+  .nav-toggle { display: block; }
+  .nav-inner nav {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--ivory);
+    border-bottom: 1px solid var(--hairline);
+    padding: 8px 20px 18px;
+    transform: translateY(-6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+  .nav-inner nav.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+  .nav-inner nav a {
+    margin-left: 0;
+    padding: 12px 0;
+    font-size: 12px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .nav-inner nav a:last-child { border-bottom: none; }
+}
+ 
 /* ---------- Hero ---------- */
 .hero {
   background: var(--ink);
@@ -169,12 +215,19 @@ header.site-nav {
 }
 .hero .hero-meta a { text-decoration: none; color: inherit; }
 .hero .hero-meta a:hover { color: var(--brass); }
-
+ 
 /* ---------- Section rhythm ---------- */
 section { padding: 90px 0; }
 section.on-ink { background: var(--ink); color: var(--ivory); }
 section + section:not(.on-ink) { border-top: 1px solid var(--hairline); }
-
+ 
+@media (max-width: 640px) {
+  .hero { padding: 76px 0 48px; }
+  section { padding: 56px 0; }
+  footer { padding: 56px 0 32px; }
+  .section-head { margin-bottom: 36px; }
+}
+ 
 .section-head { margin-bottom: 56px; }
 .section-head h2 {
   font-family: var(--display);
@@ -183,7 +236,7 @@ section + section:not(.on-ink) { border-top: 1px solid var(--hairline); }
   margin: 0;
 }
 .on-ink .line-tag { color: var(--brass); }
-.on-ink .line-tag .num { color: var(--brass); border-color: var(--brass); }
+.on-ink .line-tag .num { color: var(--brass); border-color: var(--brass); } 
 
 /* ---------- Education ---------- */
 .edu-card {
