@@ -318,100 +318,6 @@ header.site-nav {
   line-height: 1.5;
 }
 
-/* ---------- Page routing (click-to-navigate, not scroll) ---------- */
-.page { display: none; }
-.page.is-active { display: block; animation: pageIn 0.35s ease; }
-@keyframes pageIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .page.is-active { animation: none; }
-}
-
-.back-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--mono);
-  font-size: 11.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--brass-dim);
-  text-decoration: none;
-  border: 1px solid var(--hairline);
-  border-radius: 20px;
-  padding: 8px 16px;
-  margin-bottom: 36px;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-.back-home:hover { border-color: var(--brass); color: var(--brass); transform: translateX(-3px); }
-.on-ink .back-home, footer .back-home {
-  color: var(--brass);
-  border-color: var(--hairline-dark);
-}
-.on-ink .back-home:hover, footer .back-home:hover { border-color: var(--brass); }
-
-/* ---------- Home dashboard grid ---------- */
-.dashboard { padding: 70px 0 100px; }
-.dashboard .section-head { margin-bottom: 40px; }
-.case-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-@media (max-width: 860px) { .case-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .case-grid { grid-template-columns: 1fr; } }
-.case-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid var(--hairline);
-  border-radius: 4px;
-  padding: 28px;
-  position: relative;
-  background: var(--ivory);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-.case-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--brass);
-  box-shadow: 0 16px 32px rgba(14,26,43,0.1);
-}
-.case-card .case-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--brass-dim);
-  border: 1px solid var(--brass);
-  border-radius: 2px;
-  padding: 2px 7px;
-  display: inline-block;
-  margin-bottom: 16px;
-}
-.case-card h3 {
-  font-family: var(--display);
-  font-size: 19px;
-  font-weight: 500;
-  margin: 0 0 8px;
-}
-.case-card p {
-  font-size: 13.5px;
-  color: var(--slate);
-  margin: 0 0 20px;
-  line-height: 1.5;
-}
-.case-card .case-arrow {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--brass);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: gap 0.2s ease;
-}
-.case-card:hover .case-arrow { gap: 10px; }
-
 /* ---------- Section rhythm ---------- */
 section { padding: 90px 0; }
 section.on-ink { background: var(--ink); color: var(--ivory); }
@@ -1145,10 +1051,9 @@ footer .fine {
      ============================================================ -->
 <header class="site-nav">
   <div class="nav-inner">
-    <a class="name" href="#home" style="text-decoration:none;">Jackie Chen</a>
+    <a class="name" href="index.html" style="text-decoration:none;">Jackie Chen</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <nav id="siteNav">
-      <a href="#home">Home</a>
       <a href="#education">Education</a>
       <a href="#experience">Experience</a>
       <a href="#extracurricular">Involvement</a>
@@ -1160,11 +1065,6 @@ footer .fine {
     </nav>
   </div>
 </header>
-
-<!-- ============================================================
-     HOME PAGE — hero + highlights + click-through dashboard
-     ============================================================ -->
-<div class="page is-active" id="home">
 
 <!-- ============================================================
      HERO — now split into text + framed portrait photo
@@ -1220,74 +1120,10 @@ footer .fine {
 </section>
 
 <!-- ============================================================
-     DASHBOARD — click a box to jump straight to that page
-     ============================================================ -->
-<section class="dashboard">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="line-tag"><span class="num">L00</span> Where To</div>
-      <h2>Explore</h2>
-    </div>
-    <div class="case-grid reveal">
-      <a class="case-card" href="#education">
-        <span class="case-num">L01</span>
-        <h3>Education</h3>
-        <p>University of Waterloo — Sustainability &amp; Financial Management, 3.9 GPA.</p>
-        <span class="case-arrow">Open →</span>
-      </a>
-      <a class="case-card" href="#experience">
-        <span class="case-num">L02</span>
-        <h3>Experience</h3>
-        <p>Segal GCSE LLP — tax, audit, and financial statement work.</p>
-        <span class="case-arrow">Open →</span>
-      </a>
-      <a class="case-card" href="#extracurricular">
-        <span class="case-num">L03</span>
-        <h3>Involvement</h3>
-        <p>Real estate and investment training — Project Destined, Eastdil, and more.</p>
-        <span class="case-arrow">Open →</span>
-      </a>
-      <a class="case-card" href="#skills">
-        <span class="case-num">L04</span>
-        <h3>Skills</h3>
-        <p>Toolkit, certifications, and real estate knowledge.</p>
-        <span class="case-arrow">Open →</span>
-      </a>
-      <a class="case-card" href="#projects">
-        <span class="case-num">L05</span>
-        <h3>Projects</h3>
-        <p>Independent study tools built for AFM 274 and AFM 291.</p>
-        <span class="case-arrow">Open →</span>
-      </a>
-      <a class="case-card" href="#game">
-        <span class="case-num">L06</span>
-        <h3>Play</h3>
-        <p>Underwrite This Deal — a quick cap rate guessing game.</p>
-        <span class="case-arrow">Open →</span>
-      </a>
-      <a class="case-card" href="blog.html">
-        <span class="case-num">L07</span>
-        <h3>Notes</h3>
-        <p>Field notes on underwriting, modelling, tax, and audit.</p>
-        <span class="case-arrow">Open →</span>
-      </a>
-      <a class="case-card" href="#contact">
-        <span class="case-num">L08</span>
-        <h3>Contact</h3>
-        <p>Open to co-op and analyst conversations.</p>
-        <span class="case-arrow">Open →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-</div>
-<!-- ============================================================
      EDUCATION
      ============================================================ -->
-<section id="education" class="page">
+<section id="education">
   <div class="wrap">
-    <a href="#home" class="back-home">← Home</a>
     <div class="section-head reveal">
       <div class="line-tag"><span class="num">L01</span> Education</div>
       <h2>University of Waterloo</h2>
@@ -1325,9 +1161,8 @@ footer .fine {
 <!-- ============================================================
      EXPERIENCE — dark ledger section + pull-quote highlight
      ============================================================ -->
-<section id="experience" class="on-ink page">
+<section id="experience" class="on-ink">
   <div class="wrap">
-    <a href="#home" class="back-home">← Home</a>
     <div class="section-head reveal">
       <div class="line-tag"><span class="num">L02</span> Professional Experience</div>
       <h2>Segal GCSE LLP</h2>
@@ -1359,9 +1194,8 @@ footer .fine {
 <!-- ============================================================
      EXTRACURRICULAR / TRAINING
      ============================================================ -->
-<section id="extracurricular" class="page">
+<section id="extracurricular">
   <div class="wrap">
-    <a href="#home" class="back-home">← Home</a>
     <div class="section-head reveal">
       <div class="line-tag"><span class="num">L03</span> Involvement &amp; Training</div>
       <h2>Real Estate &amp; Investment Programs</h2>
@@ -1404,9 +1238,8 @@ footer .fine {
 <!-- ============================================================
      SKILLS / CERTIFICATES — certificates now shown as stamped medallions
      ============================================================ -->
-<section id="skills" class="page">
+<section id="skills">
   <div class="wrap">
-    <a href="#home" class="back-home">← Home</a>
     <div class="section-head reveal">
       <div class="line-tag"><span class="num">L04</span> Skills &amp; Credentials</div>
       <h2>Toolkit</h2>
@@ -1468,9 +1301,8 @@ footer .fine {
 <!-- ============================================================
      UNDERWRITE THIS DEAL — cap rate guessing mini-game
      ============================================================ -->
-<section id="game" class="page">
+<section id="game">
   <div class="wrap">
-    <a href="#home" class="back-home">← Home</a>
     <div class="section-head reveal">
       <div class="line-tag"><span class="num">L06</span> A Quick Test</div>
       <h2>Underwrite This Deal</h2>
@@ -1542,9 +1374,8 @@ footer .fine {
 <!-- ============================================================
      PROJECTS — showcases tools built for coursework
      ============================================================ -->
-<section id="projects" class="page">
+<section id="projects">
   <div class="wrap">
-    <a href="#home" class="back-home">← Home</a>
     <div class="section-head reveal">
       <div class="line-tag"><span class="num">L07</span> Independent Builds</div>
       <h2>Study Tools</h2>
@@ -1633,9 +1464,8 @@ footer .fine {
 <!-- ============================================================
      CONTACT / FOOTER
      ============================================================ -->
-<footer id="contact" class="page">
+<footer id="contact">
   <div class="wrap">
-    <a href="#home" class="back-home">← Home</a>
     <div class="reveal">
       <div class="line-tag"><span class="num">L05</span> Contact</div>
       <h2>Open to co-op and analyst conversations in real estate, venture capital, data analytics, and design.</h2>
@@ -1726,36 +1556,20 @@ function updateScrollProgress() {
 window.addEventListener('scroll', updateScrollProgress, { passive: true });
 updateScrollProgress();
 
-// ---------- Page router: click-to-navigate instead of scroll ----------
-const PAGE_IDS = ['home', 'education', 'experience', 'extracurricular', 'skills', 'projects', 'game', 'contact'];
-const pageLinks = document.querySelectorAll('#siteNav a[href^="#"], a.name[href^="#"]');
-
-function showPage(id) {
-  if (!PAGE_IDS.includes(id)) id = 'home';
-  PAGE_IDS.forEach(p => {
-    const el = document.getElementById(p);
-    if (!el) return;
-    el.classList.toggle('is-active', p === id);
+// ---------- Scrollspy: highlight current section in nav ----------
+const spySections = document.querySelectorAll('section[id], footer[id]');
+const spyLinks = document.querySelectorAll('#siteNav a[href^="#"]');
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      spyLinks.forEach(link => {
+        link.classList.toggle('active-link', link.getAttribute('href') === '#' + id);
+      });
+    }
   });
-  pageLinks.forEach(link => {
-    link.classList.toggle('active-link', link.getAttribute('href') === '#' + id);
-  });
-  window.scrollTo({ top: 0, behavior: 'auto' });
-
-  // Re-arm the reveal/stagger animations for the page just shown, since
-  // elements hidden via display:none never intersect and never fire.
-  const activeEl = document.getElementById(id);
-  if (activeEl) {
-    activeEl.querySelectorAll('.reveal:not(.is-visible)').forEach(el => io.observe(el));
-  }
-}
-
-function routeFromHash() {
-  const id = (location.hash || '#home').slice(1);
-  showPage(id);
-}
-window.addEventListener('hashchange', routeFromHash);
-routeFromHash();
+}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+spySections.forEach(sec => spyObserver.observe(sec));
 
 // ---------- Hero photo tilt (follows cursor, disabled on touch) ----------
 const heroPhoto = document.querySelector('.hero-photo');
